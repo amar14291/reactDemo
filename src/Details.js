@@ -1,13 +1,12 @@
 import React from 'react';
 import { CardView } from 'react-card-with-image'
 import 'react-card-with-image/dist/index.css'
-import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 
-function Gridcheck (props) {
+function Details (props) {
 
   const stIcon = {
     'margin-left': '73%',
@@ -99,4 +98,4 @@ imageWidth='200px'
 }
 
 
-export default Gridcheck;
+export default Details;

@@ -8,7 +8,7 @@ import { BrowserRouter} from "react-router-dom";
 import Main from './Main';
 
 let isUser = sessionStorage.getItem('user');
-
+isUser = true;
 ReactDOM.render(
 <BrowserRouter>
 {!isUser ? (
