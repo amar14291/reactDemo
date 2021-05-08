@@ -13,11 +13,11 @@ return (
 <nav  className="navbar navbar-expand-lg navbar-light bg-blue">
 
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+  </button> */}
 
-  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+  {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
 
     {/* <ul style={{marginLeft:'35% !important;'}} className="navbar-nav mr-auto"> */}
 
@@ -46,8 +46,11 @@ return (
 
     {/* </ul> */}
 
-  Hello Folks,
-  Search your comfortable date & area -> Search for vaccination slots -> Book on CoWIN
+
+    • Enter your comfortable date & area  • Search for vaccination slots • Book on CoWIN
+
+  {/* Disclaimer : While we have real-time data, slot availability on CoWin changes rapidly. If you see availability, please book on CoWin instantly before the slots are lost. */}
+
   {/* Online registration and appointment is now open for 18 to 44 age group.
  <p>Walk-in registration and appointment facility is currently not available for 18-44 age group, only online appointment can be taken.</p>
  <p>Appointment for Age 18 to 44 is based on slots made available by the private vaccinations centers as well as the respective state government.</p>
@@ -63,7 +66,7 @@ The second dose of COVAXIN should be taken between 28 days to 42 days after the 
     {/* <input style={{width:'8%'}} type="button" onClick= {props.logout}  value="Logout" /> */}
 
 
-  </div>
+  {/* </div> */}
 </nav>
 
 

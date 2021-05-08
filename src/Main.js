@@ -23,10 +23,10 @@ function Main (props)
 return(
   <div  style={{'background-color':'white !important;'}}>
   <h3 style={{'margin-left':'18%'}} class="display-5" >
-  <img src="https://i.imgur.com/CXQmsmF.png" class="logo"/> #Vaccination slot </h3>
+  <img src="https://i.imgur.com/CXQmsmF.png" class="logo"/>#Vaccination slot </h3>
 
 
-     <div class="container"><br/>
+     <div style={{"margin-top": "-23px;"}} class="container"><br/>
       <Nav logout={handleLogout} />
      <br/>
 

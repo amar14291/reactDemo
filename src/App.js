@@ -7,7 +7,7 @@ const axios = require('axios').default;
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { pinval : '',allcenter: [], idstate: '', iddistrict: '', idcheck: '', checkedtiffin: false, checkedwater: false, checkedpaper: false, checkedmilk: false, showsubmit: false, showInfo: false, posts: [], boxval: '', milk: '', isCheckedm: '', paper: '', tiffin: '', watercan: '', allcity: [], showsubmitpin: true, showsubmitdis: false, }
+    this.state = { pinval : '',allcenter: [], idstate: '', iddistrict: '', idcheck: '', checkedtiffin: false, checkedwater: false, checkedpaper: false, checkedmilk: false, showsubmit: false, showInfo: false, posts: [], boxval: '', milk: '', isCheckedm: '', paper: '', tiffin: '', watercan: '', allcity: [], showsubmitpin: 'none', showsubmitdis: 'block' }
   }
 
   deleteData = async (id) => {
@@ -63,8 +63,6 @@ class App extends Component {
     let datesplit = this.state.boxval.split('-');
     let corredate = datesplit[2] + '-' + datesplit[1] + '-' + datesplit[0];
 
-
-
     this.callApidistrictcenter(district, corredate).then(
       res => this.setState({ allcenter: res.sessions })
     ).catch(err => console.log(err));
@@ -115,8 +113,48 @@ class App extends Component {
   };
 
   changedate = (e) =>{
-  this.setState({ boxval: e.target.value });
+
+    //this.setState({ boxval: e.target.value });
+  this.setState((prevState, props) => ({
+    boxval: e.target.value,
+  }));
+
   this.findcenter();
+  }
+
+  searchbycheck = (e) => {
+
+    alert(e.target.text);
+
+  //   if(e.target.value=='pin')
+  // {
+
+
+  //   this.setState((prevState, props) => ({
+  //     showsubmitpin: "block",
+  //   }));
+
+  //   this.setState((prevState, props) => ({
+  //     showsubmitdis: "none",
+  //   }));
+
+
+
+  // }
+  // else
+  // {
+
+
+  //   this.setState((prevState, props) => ({
+  //     showsubmitpin: "none",
+  //   }));
+
+  //   this.setState((prevState, props) => ({
+  //     showsubmitdis: "block",
+  //   }));
+  // }
+
+
   }
 
   fetchdistrict = (e) => {
@@ -143,6 +181,7 @@ class App extends Component {
     let datesplit = this.state.boxval.split('-');
 
     let corredate = datesplit[2] + '-' + datesplit[1] + '-' + datesplit[0];
+
 
 
     this.callApidistrictcenter(e.target.value, corredate).then(
@@ -207,34 +246,56 @@ class App extends Component {
 
         <div className='row'>
 
+        <div className='form-group col-md-2'>
+        <label>Search by :  </label>
+        </div>
+
+        <div className='col-md-1'>
+        <label  ><label style={{"font-weight":"bold"}} onClick = {this.searchbycheck} value="city"> City </label></label>
+        <hr></hr>
+        </div>
+
+        <div className='col-md-1'>
+        <label>Pin</label>
+        </div>
+
+        {/* <div className='form-group col-md-2'>
         <label>Search by : </label>
-        <div className='form-group col-md-3'>
-        <input type="radio" id="male" name="gender" value="male"/>
-        <label for="male">Male</label>
+
+        <input  style={{ "width": "52%"}} checked="checked"  type="radio" onChange = {this.searchbycheck}  id="district" name="se" value="district"/>
         </div>
 
-        <div className='form-group col-md-3'>
-        <input type="radio" id="female" name="gender" value="female"/>
-        <label for="female">Female</label>
+        <label for="district">District</label>
+
+
+        <div className='form-group col-md-1'>
+        <input type="radio"  onChange = {this.searchbycheck} id="pin" name="se" value="pin"/>
         </div>
-</div>
+        <label for="pin">Pin</label> */}
 
 
-<div style={{ display: this.state.showsubmitpin ? "block" : "none" }} className='row'>
+
+
+{/* <ul class="nav nav-pills">
+
+  <li style={{"margin-left": "-190%;"}}><a href="#">City</a></li>   <label className='emplbl' ></label>  OR   <label className='emplbl' ></label>
+  <li><a href="#">Pin</a></li>
+
+</ul> */}
+
+
+         </div>
+
+
+<div style={{ display: this.state.showsubmitpin }} className='row'>
 
 <div className='form-group col-md-3'>
+
   <label>Choose Date : </label>
+  <input className='form-control' type="date"  onChange={this.changedate}  value={this.state.boxval} />
+  </div>
 
-   <input className='form-control' type="date"  onChange={this.changedate}  value={this.state.boxval} />
-
-   </div>
-
-
-
-
-
-
- <div className='form-group col-md-3'>
+  <div className='form-group col-md-3'>
  <label for="city"> Enter pincode : </label>
    <input type="text" value={this.state.pinval} onChange={e => this.setState({ pinval: e.target.value })} />
   </div>
@@ -246,7 +307,7 @@ class App extends Component {
 
   </div>
 
-       <div style={{ display: this.state.showsubmitdis ? "block" : "none" }} className='row'>
+       <div style={{ display: this.state.showsubmitdis }} className='row'>
 
        <div className='form-group col-md-3'>
          <label>Choose Date : </label>
@@ -295,14 +356,21 @@ class App extends Component {
         {/* <Grid data={this.state.posts} simplifiedFunction={this.deleteData} getde={this.getsData} /> */}
 
         <div className="bg-blue">
-                <div className="row px-2 py-2">
+                <div className="row px-1 py-1">
                 <div className="col-md-6">
                 <small >Copyright &copy; 2021. All rights reserved.</small>
                 </div>
                 <div className="col-md-6">
 
                <div className="text-right">
-                Developed by <a href="https://www.linkedin.com/in/amar-jain-3b36603b/" target="_blank" > <b>Amar Jain</b></a>
+
+                Developed by @
+
+                {/* <a href="https://www.linkedin.com/in/amar-jain-3b36603b/" target="_blank" >
+                <b>Amar Jain</b>
+                </a> */}
+
+              <a><b>Amar Jain - 7898123450</b></a>
 
                  {/* <span class="fa fa-facebook mr-4 text-sm"></span>
                  <span class="fa fa-google-plus mr-4 text-sm"></span>
